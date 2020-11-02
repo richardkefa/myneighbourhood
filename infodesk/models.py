@@ -23,3 +23,12 @@ class Business(models.Model):
   def__str__(self):
     return self.business_name
   
+class Posts(models.Model):
+  post = models.TextField()
+  user = models.ForeignKey(User,on_delete=models.CASCADE)
+  hood = models.ForeignKey(Neighbourhoods,on_delete=models.CASCADE)
+  
+  def__str__(self):
+    return self.post
+  
+
