@@ -20,7 +20,7 @@ class Business(models.Model):
   description = models.TextField()
   business_img = CloudinaryField('image')
   
-  def__str__(self):
+  def __str__(self):
     return self.business_name
   
 class Posts(models.Model):
@@ -28,18 +28,18 @@ class Posts(models.Model):
   user = models.ForeignKey(User,on_delete=models.CASCADE)
   hood = models.ForeignKey(Neighbourhoods,on_delete=models.CASCADE)
   
-  def__str__(self):
+  def __str__(self):
     return self.post
   
 class public_amenities(models.Model):
-  amenity_name = models.CharField()
+  amenity_name = models.CharField(max_length=200)
   tel_number = models.IntegerField()
-  location = models.CharField()
-  address = models.CharField()
+  location = models.CharField(max_length=200)
+  address = models.CharField(max_length=200)
   email = models.EmailField()
   hood = models.ForeignKey(Neighbourhoods,on_delete=models.CASCADE)
   
-  def__str__(self):
+  def __str__(self):
     return self.amenity_name
   
 

@@ -4,4 +4,4 @@ from .models import Neighbourhoods,Business,Posts
 
 def biz_in_hood(requests,hood):
   business = Business.objects.filter(hood=hood)
-  return render(request,'infodesk/home.html',{'business'=businesses})
+  return render(request,'infodesk/home.html',{'business':businesses})
