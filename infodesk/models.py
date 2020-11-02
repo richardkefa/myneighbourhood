@@ -31,4 +31,17 @@ class Posts(models.Model):
   def__str__(self):
     return self.post
   
+class public_amenities(models.Model):
+  amenity_name = models.CharField()
+  tel_number = models.IntegerField()
+  location = models.CharField()
+  address = models.CharField()
+  email = models.EmailField()
+  hood = models.ForeignKey(Neighbourhoods,on_delete=models.CASCADE)
+  
+  def__str__(self):
+    return self.amenity_name
+  
+
+  
 
