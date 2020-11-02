@@ -11,3 +11,15 @@ class Neighbourhoods(models.Model):
   
   def __str__(self):
     return self.hood_name
+  
+class Business(models.Model):
+  business_name = models.CharField(max_length=200)
+  user = models.ForeignKey(User,on_delete=models.CASCADE)
+  hood = models.ForeignKey(Neighbourhoods,on_delete=models.CASCADE)
+  business_email = models.EmailField()
+  description = models.TextField()
+  business_img = CloudinaryField('image')
+  
+  def__str__(self):
+    return self.business_name
+  
