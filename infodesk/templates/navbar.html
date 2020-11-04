@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div class="container-fluid">
+     <!--Navbar -->
+<nav id="nav" class="mb-1 navbar navbar-expand-lg navbar-light lighten-1">
+  <a class="navbar-brand" href="{% url 'home' %}">Neighbourhood</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+
+    {% if user.is_authenticated %}
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-item nav-link btn btn-default black-text" href="{% url 'new_post' %}">New Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link btn btn-default black-text" href="">Neighbourhood</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link btn btn-default black-text" href="">Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link btn btn-default black-text" href="{% url 'hood_details' user.pk %}">Hood Details</a>
+      </li>
+      
+    </ul>
+    <div class="navbar-right">
+
+
+    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item avatar dropdown" >
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <img src="{{user.profiles.profile_pic.url}}" class="rounded-circle z-depth-0 img-fluid"
+            alt="avatar image" width="40px" height="30px">
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary "
+          aria-labelledby="navbarDropdownMenuLink-55">
+          <a class="nav-item nav-link dropdown-item black-text" href="{% url 'profile' %}">Profile</a>
+          <a class="nav-item nav-link dropdown-item black-text" href="{% url 'logout' %}">Logout</a>
+        </div>
+      </li>
+    </ul>
+      {% else %}
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-item nav-link" href="{% url 'register' %}">Register</a></li>
+      </ul>
+    {% endif %}
+
+  </div>
+</nav>
+<!--/.Navbar -->
+</body>
+
+  </div>
+</html>

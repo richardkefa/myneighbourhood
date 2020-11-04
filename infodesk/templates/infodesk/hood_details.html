@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Card Light -->
+      <div class="card" id="">
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Social shares button -->
+          <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+          <!-- Title -->
+          <h4 class="card-title">{{hood.hood_name}}</h4>
+          <hr>
+          <!-- Text -->
+          <p class="card-text">{{hood.hood_location}}</p>
+          <p class="card-text">{{hood.occupant_count}}</p>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Card Light -->
+
+{% endblock %}

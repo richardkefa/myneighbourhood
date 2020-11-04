@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load cloudinary %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      {% if posts %}
+      {% for post in posts %}
+      <div class="card" id="">
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Social shares button -->
+          <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+          <!-- Title -->
+          <hr>
+          <!-- Text -->
+          <p class="card-text">{{post.post}}</p>
+          <p class="card-text text-muted"><small>posted by{{post.user]}</small></p>
+
+        </div>
+
+      </div>
+      {% endfor %}
+      {% else %}
+      <h3>No post Yet</h3>
+      {% endif %}
+    </div>
+    <div class="col-md-4">
+      <form method="POST" class="card">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Add Post</legend>
+          {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

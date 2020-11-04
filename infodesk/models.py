@@ -1,7 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.urls import reverse 
 from cloudinary.models import CloudinaryField
+from django.conf import settings
+
 
 
 class Neighbourhoods(models.Model):
@@ -14,7 +15,6 @@ class Neighbourhoods(models.Model):
   
 class Business(models.Model):
   business_name = models.CharField(max_length=200)
-  user = models.ForeignKey(User,on_delete=models.CASCADE)
   hood = models.ForeignKey(Neighbourhoods,on_delete=models.CASCADE)
   business_email = models.EmailField()
   description = models.TextField()
@@ -25,11 +25,14 @@ class Business(models.Model):
   
 class Posts(models.Model):
   post = models.TextField()
-  user = models.ForeignKey(User,on_delete=models.CASCADE)
   hood = models.ForeignKey(Neighbourhoods,on_delete=models.CASCADE)
+  post_date = models.DateTimeField(auto_now_add=True)
   
   def __str__(self):
     return self.post
+  
+  def get_absolute_url(self):
+    return reverse('post',kwargs={'hood':self.hood})
   
 class public_amenities(models.Model):
   amenity_name = models.CharField(max_length=200)
@@ -42,6 +45,23 @@ class public_amenities(models.Model):
   def __str__(self):
     return self.amenity_name
   
+  
+  
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+from cloudinary.models import CloudinaryField
 
+class Profiles(models.Model):
+  user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+  bio = models.TextField()
+  profile_pic = CloudinaryField('image')
+  hood = models.OneToOneField(Neighbourhoods,on_delete=models.CASCADE)
+  
+  def __str__(self):
+    return bio
   
 
+  
+class User(AbstractUser):
+  hood = models.ForeignKey(Neighbourhoods,on_delete=models.CASCADE,default='1')

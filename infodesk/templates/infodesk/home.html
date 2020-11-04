@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+  {% if amenities %}
+  <h1>Public Amenities</h1>
+  <div class="row mb-4">
+    {% for amenity in amenities %}
+    <div class="col-md-3">
+      <div class="card" id="project_card">
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Social shares button -->
+          <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+          <!-- Title -->
+          <h4 class="card-title">{{amenity.amenity_name}}</h4>
+          <hr>
+          <!-- Text -->
+          <p class="card-text">{{amenity.tel_number}}</p>
+          <p class="card-text">{{amenity.location}}</p>
+          <p class="card-text">{{amenity.hood}}</p>
+          <p class="card-text">{{amenity.address}}</p>
+          <p class="card-text">{{amenity.email}}</p>
+
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+  {% else %}
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center">No public amenities posted yet</h3>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if businesses %}
+  <h1 class="text-center default-text">businesses</h1>
+  <div class="row">
+    {% for business in businesses %}
+    <div class="col-md-3">
+      <!-- Card Light -->
+      <div class="card" id="project_card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <a href="{{project.live_link}}">
+            <img class="card-img-top" src="{{business.business_img.url}}" alt="Card image cap">
+          </a>
+
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Social shares button -->
+          <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+          <!-- Title -->
+          <h4 class="card-title">{{business.business_name}}</h4>
+          <hr>
+          <!-- Text -->
+          <p class="card-text">{{business.description}}</p>
+          <p class="card-text">{{business.business_email}}</p>
+
+        </div>
+
+      </div>
+      <!-- Card Light -->
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center">No Projects posted yet</h3>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
