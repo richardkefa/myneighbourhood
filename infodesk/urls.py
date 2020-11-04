@@ -8,7 +8,7 @@ from .views import ListProfileView
 
 
 urlpatterns = [
-  url(r'^hood/$',views.biz_in_hood,name='home'), 
+  url(r'^$',views.biz_in_hood,name='home'), 
   url(r'^hood_details/(?P<pk>\d+)/$',PostDetailView.as_view(),name='hood_details'),
   url(r'^post/new/',PostCreateView.as_view(),name='new_post'),
   url(r'^post/(?P<hood>\d+)/$',views.hood_posts,name='post'),
@@ -22,3 +22,4 @@ urlpatterns = [
 
 if settings.DEBUG:
   static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+  
